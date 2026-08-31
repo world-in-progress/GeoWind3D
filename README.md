@@ -1,5 +1,11 @@
 # GeoWind3D
 
+[![React](https://img.shields.io/badge/React-19.2-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Mapbox GL JS](https://img.shields.io/badge/Mapbox_GL_JS-3.17-000000?logo=mapbox&logoColor=white)](https://docs.mapbox.com/mapbox-gl-js/)
+[![Node.js](https://img.shields.io/badge/Node.js-20%2B-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+
 GeoWind3D is a web application for constructing high-fidelity CFD-ready 3D city models from 3D image data and OpenStreetMap (OSM) data. Users can define an area of interest and generate integrated models of buildings, terrain and elevated walkways, together with an OpenFOAM case for wind simulation.
 
 ## Repository structure
