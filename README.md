@@ -64,7 +64,7 @@ Edit `server/.env` and set:
 - the PostgreSQL connection values for the imported database
 - `GEOMETRY_SERVICE_URL` if the Python service is not running at `http://localhost:8000`
 
-Edit `app/.env` and provide a valid `VITE_MAPBOX_TOKEN`. Change `VITE_BACKEND_URL` if the Node.js backend is not running at `http://localhost:5000`.
+Edit `app/.env` and provide a valid `VITE_MAPBOX_TOKEN`. Change `VITE_BACKEND_URL` if the Node.js server is not running at `http://localhost:5000`.
 
 ## Installation
 
