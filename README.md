@@ -114,6 +114,6 @@ npm run dev
 
 Open `http://localhost:5173` in a web browser.
 
-## Data availability
+## License
 
-The OSM data required by the system are included in `database/citywind.sql`. The 3D image data are provided as `central.zip` in the linked Figshare item.
+This project is licensed under the [MIT License](LICENSE).
