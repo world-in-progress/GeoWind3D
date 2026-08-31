@@ -21,7 +21,8 @@ GeoWind3D is a web application for constructing high-fidelity CFD-ready 3D city 
 
 ### 1. Download the 3D image data
 
-The downloadable case data cover Central District in Hong Kong and are available in the [GeoWind3D dataset on Figshare](https://figshare.com/s/a7be4e23c895eaa6182f). Download `central.zip` from the item and extract it. The extracted `central` directory must contain `tileset.json` and its associated tile files.
+The downloadable case data cover Central District in Hong Kong and are available in 
+[Figshare](https://figshare.com/s/a7be4e23c895eaa6182f). Download `central.zip` from the item and extract it. The extracted `central` directory must contain `tileset.json` and its associated tile files.
 
 ### 2. Create the database
 
