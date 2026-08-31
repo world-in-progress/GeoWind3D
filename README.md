@@ -88,7 +88,7 @@ Start the Python geometry service:
 
 ```bash
 cd geometry
-uv run uvicorn api:app --reload --port 8000
+uv run main.py
 ```
 
 Start the Node.js backend in a second terminal:
