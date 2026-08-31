@@ -1,0 +1,146 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2106                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      snappyHexMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#includeEtc "caseDicts/mesh/generation/snappyHexMeshDict.cfg"
+
+castellatedMesh on;
+snap            on;
+addLayers       off;
+
+geometry
+{
+    structure
+    {
+        type triSurfaceMesh;
+        file "{{structureObj}}";
+    }
+
+    terrain
+    {
+        type triSurfaceMesh;
+        file "{{terrainObj}}";
+    }
+
+{{extraGeometry}}
+}
+
+castellatedMeshControls
+{
+    maxLocalCells       1000000;
+    maxGlobalCells      20000000;
+    minRefinementCells  0;
+    maxLoadUnbalance    0.10;
+    nCellsBetweenLevels 4;
+
+    features
+    (
+        { file "{{structureEMesh}}"; level 3; }
+        // Terrain is an interpolated CDT surface rather than a sharp obstacle,
+        // so do not refine its extracted feature edges for large-scale runs.
+        // { file "{{terrainEMesh}}"; level 1; }
+    );
+
+    refinementSurfaces
+    {
+        structure
+        {
+            level (3 4);
+            patchInfo { type wall; }
+        }
+
+        terrain
+        {
+            // Previous finer terrain refinement:
+            // level (1 2);
+            level (0 1);
+            patchInfo { type wall; }
+        }
+    }
+
+    // Previous feature angle was too sensitive for interpolated terrain facets:
+    // resolveFeatureAngle 15;
+    resolveFeatureAngle 45;
+
+    refinementRegions
+    {
+{{extraRefinementRegions}}
+    }
+
+    locationInMesh ({{locationInMeshX}} {{locationInMeshY}} {{locationInMeshZ}});
+    allowFreeStandingZoneFaces true;
+}
+
+snapControls
+{
+    nSmoothPatch           1;
+    tolerance              4.0;
+    nSolveIter             50;
+    nRelaxIter             5;
+    nFeatureSnapIter       10;
+    explicitFeatureSnap    true;
+    implicitFeatureSnap    false;
+    multiRegionFeatureSnap false;
+}
+
+addLayersControls
+{
+    layers
+    {
+        "CAD.*"
+        {
+            nSurfaceLayers 2;
+        }
+    }
+
+    relativeSizes       true;
+    expansionRatio      1.2;
+    finalLayerThickness 0.5;
+    minThickness        1e-3;
+}
+
+meshQualityControls
+{
+    maxNonOrtho         65;
+    maxBoundarySkewness 4;
+    maxInternalSkewness 4;
+    maxConcave          80;
+    minVol              1e-13;
+    minTetQuality       1e-30;
+    minArea             -1;
+    minTwist            0.05;
+    minDeterminant      0.001;
+    minFaceWeight       0.05;
+    minVolRatio         0.01;
+    minTriangleTwist    -1;
+    nSmoothScale        4;
+    errorReduction      0.75;
+    relaxed
+    {
+        maxNonOrtho     75;
+    }
+}
+
+writeFlags
+(
+    // scalarLevels
+    // layerSets
+    // layerFields
+);
+
+mergeTolerance 1e-6;
+
+
+// ************************************************************************* //

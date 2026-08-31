@@ -1,0 +1,17 @@
+#!/bin/bash
+cd "${0%/*}" || exit 1
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions
+
+# 1. Extract surface feature edges.
+runApplication surfaceFeatureExtract
+
+# 2. Generate the background mesh.
+runApplication blockMesh
+
+# 3. Refine with snappyHexMesh (castellated mesh and snapping).
+#    -overwrite writes the final mesh back to constant/polyMesh without creating time-step directories.
+#    The solver can therefore read boundary conditions directly from 0/ without restore0Dir.
+runApplication snappyHexMesh -overwrite
+
+# 4. Run the solver.
+runApplication $(getApplication)

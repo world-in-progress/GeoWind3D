@@ -1,0 +1,40 @@
+{
+  "taskId": "2026-08-20T15-48-48-8q48c6",
+  "generatedAt": "2026-08-20T16:53:37.169Z",
+  "coordinateSpace": {
+    "objVertexSpace": "EPSG:2326 local offset coordinates",
+    "horizontalCRS": "EPSG:2326",
+    "verticalCoordinate": "absolute sampled elevation stored directly in OBJ z",
+    "offset_2326": [
+      834458.2785006501,
+      815901.6470413986
+    ],
+    "origin_lonlat": [
+      114.15931392442343,
+      22.281991157406488
+    ],
+    "mercatorZScale": 0.9253289409123618
+  },
+  "restoreToEPSG2326": {
+    "x_2326": "obj_x + offset_2326[0]",
+    "y_2326": "obj_y + offset_2326[1]",
+    "z": "obj_z"
+  },
+  "restoreToWGS84": {
+    "horizontal": "Transform (x_2326, y_2326) from EPSG:2326 to EPSG:4326.",
+    "z": "Keep obj_z as absolute elevation."
+  },
+  "files": {
+    "buildingObj": "building/building.obj",
+    "terrainObj": "terrain/terrain.obj",
+    "corridorObj": "elevated_way/elevated_walkway.obj",
+    "structureObj": "integration/structure.obj",
+    "openfoamCase": "../../OpenFOAM/case_2026-08-20T16-53-36-444Z_9ead214d",
+    "buildingPatchesGeojson": "building/building_patches.geojson",
+    "roofClusterMeshObjs": [
+      "building/roof/roof_plane_clusters_rank_1.obj",
+      "building/roof/roof_plane_clusters_rank_2.obj",
+      "building/roof/roof_plane_clusters_rank_3.obj"
+    ]
+  }
+}
